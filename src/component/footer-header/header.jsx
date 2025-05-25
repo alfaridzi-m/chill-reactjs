@@ -1,0 +1,34 @@
+import Logo from "../../assets/icon/cliper.png"
+import User from "../../assets/icon/cat-icon.jpg"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom'
+const Header = () => {
+    return (
+        <>
+            <header className="bg-black px-3.5 py-3.5 md:px-20 md:py-6 flex-wrap h-fit w-full text-white shadow-xl">
+                <nav className="flex flex-row justify-around md:justify-between h-fit">
+                    <ul className="flex flex-row gap-4 md:gap-20 items-center flex-wrap text-base md:text-xl box-border">
+                        <li className="flex flex-row items-center gap-1 md:gap-4"><img src={Logo} href="chill.html" className="w-7 md:w-12"/><span className="md:block text-white font-bold text-4xl hidden">CHILL</span> </li>
+                        <li className="hover:bg-gray-800 p-2 hover:rounded-2xl hover:border-0.5 hover:border-gray-500"><Link to='/Series'>Series</Link></li>
+                        <li className="hover:bg-gray-800 p-2 hover:rounded-2xl hover:border-0.5 hover:border-gray-500" ><Link to='/Series'>Film</Link></li>
+                        <li className="hover:bg-gray-800 p-2 hover:rounded-2xl hover:border-0.5 hover:border-gray-500"><Link to='/Series'>Daftar Saya</Link></li>
+                    </ul>
+                    <div className="flex flex-row w-1/5 items-center gap-1.5 justify-end">
+                        <img className=" w-6 rounded-full hover:rounded-sm cursor-pointer border-1 border-gray-500 md:w-10" src={User} alt="user"/>
+                        <div className="relative group flex flex-col">
+                            <span><FontAwesomeIcon icon={faCircleChevronDown} className="cursor-pointer text-l md:text-2xl text-white" /></span>
+                            <div className="absolute top-3 right-2 hidden group-hover:flex flex-col px-3 py-1 rounded-xl bg-black border-1 border-gray-800 text-white md:w-35 gap-3">
+                                <a className="hover:text-blue-600" href="#">Akun saya</a>
+                                <a className="hover:text-blue-600" href="#">Pengaturan</a>
+                                <a className="hover:text-blue-600" href="login-page.html">Keluar</a>
+                            </div>  
+                        </div>  
+                    </div>  
+                </nav>
+            </header>
+        </>
+    )
+}
+
+export default Header

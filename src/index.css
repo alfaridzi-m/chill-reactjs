@@ -8,3 +8,7 @@
       @apply h-full;
     }
   }
+
+*{
+  font-family: 'Lato';
+}
