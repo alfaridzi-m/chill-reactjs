@@ -2,7 +2,7 @@ import BgLogin from "../assets/etc/BG_login.jpg"
 import RegiLogin from "../component/register-login/head-regis"
 import PasswordInput from "../component/register-login/password-input"
 import LoginOption from "../component/register-login/login-option"
-
+import { Link } from "react-router"
 
 const Register = () => {
     return (
@@ -21,7 +21,7 @@ const Register = () => {
                     </form>
                 </div>
                 <div className="flex flex-row text-xs justify-between w-full mt-1.5 sm:text-base sm:mt-3">
-                    <p className="text-[rgba(193,194,196,1)]">Sudah punya akun? <a href="#" className="text-white">Masuk</a></p>
+                    <p className="text-[rgba(193,194,196,1)]">Sudah punya akun? <Link to='/login'><a className="text-white">Masuk</a></Link></p>
                 </div>  
                 <LoginOption welcome="Daftar"/>
             </main>

@@ -1,13 +1,16 @@
+import Footer from "../component/footer-header/footer"
 import Header from "../component/footer-header/header"
+import Topsection from "../component/section/top-section"
 
 const Mainpage = () => {
     return (
         <>
             <Header/>
-            <div className=" w-full h-lvh text-center bg-amber-100">
-                isi mainpage
+            <Topsection/>
+            <div className=" w-full h-lvh text-center bgTopsection-white">
+                isi mainpage ggggg
             </div>
-            <Header/>
+            <Footer/>
         </>
     )
 }

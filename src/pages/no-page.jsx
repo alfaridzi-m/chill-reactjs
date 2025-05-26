@@ -1,10 +1,16 @@
 import {Link} from 'react-router'
+import BgLogin from "../assets/etc/BG_login.jpg"
 const NoPage = () => {
     return (
-        <div>
-            <h1>404</h1>
-            <Link to={'/'}><button>Kembali Ke home</button></Link>
-        </div>
+        <>
+            <div style={{ backgroundImage: `url(${BgLogin})` }} className="font-lato bg-cover bg-center flex flex-col flex-wrap justify-center items-center h-full">
+                <div className='w-1/4 h-1/4 bg-white/30 backdrop-blur-md flex flex-col justify-center items-center gap-3 rounded-2xl drop-shadow-2xl'>
+                    <h1>Halaman tidak ditemukan</h1>
+                    <p>404</p>
+                    <Link to={'/'}><button className='bg-gray-200 backdrop-blur-xl rounded-2xl p-2.5 cursor-pointer'>Kembali Ke home</button></Link>
+                </div>
+            </div>
+        </>
     )
 }
 
