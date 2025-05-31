@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "image": "./etc/landscape/image1.png",
+        "title": "Random Title 49",
+        "rating": "4.8/5"
+    },
+    {
+        "id": 2,
+        "image": "./etc/landscape/image2.png",
+        "title": "Random Title 98",
+        "rating": "4.0/5"
+    },
+    {
+        "id": 3,
+        "image": "./etc/landscape/image3.png",
+        "title": "Random Title 19",
+        "rating": "3.4/5"
+    },
+    {
+        "id": 4,
+        "image": "./etc/landscape/image4.png",
+        "title": "Random Title 83",
+        "rating": "3.0/5"
+    },
+    {
+        "id": 5,
+        "image": "./etc/landscape/image5.png",
+        "title": "Random Title 5",
+        "rating": "3.4/5"
+    },
+    {
+        "id": 6,
+        "image": "./etc/landscape/image6.png",
+        "title": "Random Title 84",
+        "rating": "4.9/5"
+    },
+    {
+        "id": 7,
+        "image": "./etc/landscape/image7.png",
+        "title": "Random Title 96",
+        "rating": "4.2/5"
+    },
+    {
+        "id": 8,
+        "image": "./etc/landscape/image8.png",
+        "title": "Random Title 98",
+        "rating": "3.7/5"
+    },
+    {
+        "id": 9,
+        "image": "./etc/landscape/image9.png",
+        "title": "Random Title 69",
+        "rating": "4.9/5"
+    },
+    {
+        "id": 10,
+        "image": "./etc/landscape/image10.png",
+        "title": "Random Title 15",
+        "rating": "4.5/5"
+    },
+    {
+        "id": 11,
+        "image": "./etc/landscape/image11.png",
+        "title": "Random Title 8",
+        "rating": "3.6/5"
+    },
+    {
+        "id": 12,
+        "image": "./etc/landscape/image12.png",
+        "title": "Random Title 81",
+        "rating": "3.4/5"
+    },
+    {
+        "id": 13,
+        "image": "./etc/landscape/image13.png",
+        "title": "Random Title 39",
+        "rating": "4.0/5"
+    },
+    {
+        "id": 14,
+        "image": "./etc/landscape/image14.png",
+        "title": "Random Title 4",
+        "rating": "3.7/5"
+    },
+    {
+        "id": 15,
+        "image": "./etc/landscape/image15.png",
+        "title": "Random Title 42",
+        "rating": "3.2/5"
+    },
+    {
+        "id": 16,
+        "image": "./etc/landscape/image16.png",
+        "title": "Random Title 11",
+        "rating": "3.8/5"
+    },
+    {
+        "id": 17,
+        "image": "./etc/landscape/image17.png",
+        "title": "Random Title 63",
+        "rating": "3.1/5"
+    },
+    {
+        "id": 18,
+        "image": "./etc/landscape/image18.png",
+        "title": "Random Title 27",
+        "rating": "4.6/5"
+    },
+    {
+        "id": 19,
+        "image": "./etc/landscape/image19.png",
+        "title": "Random Title 5",
+        "rating": "4.1/5"
+    },
+    {
+        "id": 20,
+        "image": "./etc/landscape/image20.png",
+        "title": "Random Title 19",
+        "rating": "3.7/5"
+    },
+    {
+        "id": 21,
+        "image": "./etc/landscape/image21.png",
+        "title": "Random Title 72",
+        "rating": "3.7/5"
+    },
+    {
+        "id": 22,
+        "image": "./etc/landscape/image22.png",
+        "title": "Random Title 21",
+        "rating": "5.0/5"
+    }
+]

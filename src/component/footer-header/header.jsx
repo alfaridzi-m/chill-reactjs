@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 const Header = () => {
     return (
         <>
-            <header className="bg-black px-3.5 py-3.5 md:px-20 md:py-5 flex-wrap w-full fixed text-white shadow-xl">
+            <header className="bg-black px-3.5 py-3.5 md:px-20 md:py-5 flex-wrap w-full fixed text-white shadow-xl z-50">
                 <nav className="flex flex-row justify-around md:justify-between h-fit">
                     <ul className="flex flex-row gap-4 md:gap-20 items-center  text-base md:text-xl box-border">
                         <li className="flex flex-row gap-1 items-end"><img src={Logo} href="chill.html" className="w-7 md:w-12"/><img className="w-25 hidden md:flex p-0" src={Chill} alt="-" /> </li>

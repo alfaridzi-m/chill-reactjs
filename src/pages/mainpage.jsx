@@ -1,5 +1,7 @@
+
 import Footer from "../component/footer-header/footer"
 import Header from "../component/footer-header/header"
+import ContinueSection from "../component/section/continue-section"
 import Topsection from "../component/section/top-section"
 
 const Mainpage = () => {
@@ -7,7 +9,8 @@ const Mainpage = () => {
         <>
             <Header/>
             <Topsection/>
-            <div className=" w-full h-lvh text-center bgTopsection-white">
+            <ContinueSection/>
+            <div className=" w-full text-center bgTopsection-white">
                 isi mainpage ggggg
             </div>
             <Footer/>
