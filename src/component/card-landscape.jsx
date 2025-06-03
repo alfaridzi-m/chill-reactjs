@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const images = import.meta.glob('../assets/etc/landscape/*.png', { eager: true });
+console.log(images);
 
 const data = Object.keys(images).map((path) => {
   return {

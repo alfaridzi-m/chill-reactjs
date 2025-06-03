@@ -8,13 +8,13 @@ const ContinueSection = () => {
                 <div className="flex flex-col gap-5 h-full w-full">
                     <h3 className="text-xl font-bold">Melanjutkan Tonton Film</h3>
                     <div className="flex flex-row gap-4 overflow-x-auto w-full">
-                        <CardLandscape title="Batman" indexx={1}/>
-                        <CardLandscape title="Stuart Little" indexx={2}/>
-                        <CardLandscape title="Baymax" indexx={4}/>
                         <CardLandscape title="Suzume" indexx={0}/>
-                        <CardLandscape title="Korea Film" indexx={5}/>
+                        <CardLandscape title="Megan" indexx={1}/>
+                        <CardLandscape title="Jurassic World" indexx={2}/>
+                        <CardLandscape title="Dilan" indexx={3}/>
+                        <CardLandscape title="Sonic" indexx={4}/>
+                        <CardLandscape title="Spiderman" indexx={5}/>
                         <CardLandscape title="Guardian Galaxy" indexx={6}/>
-                        <CardLandscape title="All Of Us Dead" indexx={3}/>
                         <CardLandscape title="Alice Borderland" indexx={8}/>
                         <CardLandscape title="Missing" indexx={9}/>
                         <CardLandscape title="Megan" indexx={10}/>
