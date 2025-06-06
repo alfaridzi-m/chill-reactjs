@@ -12,7 +12,7 @@ const Mainpage = () => {
         <>
             <Header/>
             <Topsection/>
-            <ContinueSection/>
+            <ContinueSection />
             <TopratingSection  title />
             <TrandingSection title/>
             <NewrilisSection title/>

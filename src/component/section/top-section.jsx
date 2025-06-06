@@ -4,7 +4,7 @@ import { faVolumeXmark,faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 const Topsection = () => {
   return (
   <>
-    <section className="h-2/5 md:h-1/2 xl:h-2/3 pt-15 md:pt-20">
+    <section className="h-2/5 md:h-1/2 xl:h-2/3 pt-15 md:pt-20 ">
             <div  style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0), #151515), url(${Image})` }} className="bg-cover bg-center h-full text-white">
                 <div className="h-full flex flex-col align-bottom justify-end px-5 py-10 md:p-20 lg:p-40 ">
                     <h3 className="text-2xl font-bold">Up!!!</h3>
