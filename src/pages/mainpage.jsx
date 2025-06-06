@@ -13,12 +13,9 @@ const Mainpage = () => {
             <Header/>
             <Topsection/>
             <ContinueSection/>
-            <TopratingSection/>
-            <TrandingSection/>
-            <NewrilisSection/>
-            <div className=" w-full text-center bgTopsection-white">
-                isi mainpage ggggg
-            </div>
+            <TopratingSection  title />
+            <TrandingSection title/>
+            <NewrilisSection title/>
             <Footer/>
         </>
     )

@@ -6,7 +6,7 @@ const ContinueSection = () => {
            <section className="h-1/4 w-full bg-bl mt-5 pl-5 text-white" >
             <div className="">
                 <div className="flex flex-col gap-5 h-full w-full">
-                    <h3 className="text-xl font-bold">Melanjutkan Tonton Film</h3>
+                    <h3 className="text-xl font-bold xl:text-3xl">Melanjutkan Tonton Film</h3>
                     <div className="flex flex-row gap-4 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full">
                         <CardLandscape title="Suzume" indexx={0}/>
                         <CardLandscape title="Megan" indexx={1}/>

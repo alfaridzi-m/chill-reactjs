@@ -1,12 +1,14 @@
 import CardPortrait from "../card/card-portrait"
 
-const TopratingSection = () => {
+const TopratingSection = ({title}) => {
     return (
         <>
            <section className="h-1/4 w-full bg-bl mt-5 pl-5 py-5 text-white mb-5" >
             <div className="">
                 <div className="flex flex-col gap-5 h-full w-full">
-                    <h3 className="text-xl font-bold">Top Rating Film dan Series Hari Ini</h3>
+                    {title && (
+                    <h3 className="text-xl font-bold xl:text-3xl">Top Rating Film dan Series Hari Ini</h3>)}
+
                     <div className="flex flex-row gap-4 overflow-x-auto w-full [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full">
                     <CardPortrait title="Satu" indexx="1" top/>     
                     <CardPortrait title="Satu" indexx="2" />    
