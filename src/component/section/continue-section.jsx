@@ -15,7 +15,7 @@ const ContinueSection = () => {
                         <CardLandscape title="Sonic" indexx={4}/>
                         <CardLandscape title="Spiderman" indexx={5}/>
                         <CardLandscape title="Guardian Galaxy" indexx={6}/>
-                        <CardLandscape title="Alice Borderland" indexx={8}/>
+                        <CardLandscape title="Guardian Of galaxy" indexx={8}/>
                         <CardLandscape title="Missing" indexx={9}/>
                         <CardLandscape title="Megan" indexx={10}/>
                         <CardLandscape title="Jurassic World" indexx={11}/>
