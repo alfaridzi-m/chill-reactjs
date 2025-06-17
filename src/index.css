@@ -3,11 +3,6 @@
 @theme {
     --font-lato: "lato", sans-serif; 
   }
-@layer base {
-    html, body, #root {
-      @apply h-full;
-    }
-  }
 
 *{
   font-family: 'Lato';
