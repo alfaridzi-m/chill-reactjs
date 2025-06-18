@@ -1,0 +1,276 @@
+{
+  "portraits": [
+    {
+      "title": "Film Korea",
+      "rating": "4.3/5",
+      "img": "/src/assets/etc/potrait/potrait1.png"
+    },
+    {
+      "title": "Shazam",
+      "rating": "3.7/5",
+      "img": "/src/assets/etc/potrait/potrait2.png"
+    },
+    {
+      "title": "Avatar",
+      "rating": "4.8/5",
+      "img": "/src/assets/etc/potrait/potrait3.png"
+    },
+    {
+      "title": "Need For Speed",
+      "rating": "3.9/5",
+      "img": "/src/assets/etc/potrait/potrait4.png"
+    },
+    {
+      "title": "Ice Man 5",
+      "rating": "4.5/5",
+      "img": "/src/assets/etc/potrait/potrait5.png"
+    },
+    {
+      "title": "Ice Man 6",
+      "rating": "3.2/5",
+      "img": "/src/assets/etc/potrait/potrait6.png"
+    },
+    {
+      "title": "Ice Man 7",
+      "rating": "4.1/5",
+      "img": "/src/assets/etc/potrait/potrait7.png"
+    },
+    {
+      "title": "Ice Man 8",
+      "rating": "4.9/5",
+      "img": "/src/assets/etc/potrait/potrait8.png"
+    },
+    {
+      "title": "Ice Man 9",
+      "rating": "3.5/5",
+      "img": "/src/assets/etc/potrait/potrait9.png"
+    },
+    {
+      "title": "Ice Man 10",
+      "rating": "4.6/5",
+      "img": "/src/assets/etc/potrait/potrait10.png"
+    },
+    {
+      "title": "Ice Man 11",
+      "rating": "3.8/5",
+      "img": "/src/assets/etc/potrait/potrait11.png"
+    },
+    {
+      "title": "Ice Man 12",
+      "rating": "4.2/5",
+      "img": "/src/assets/etc/potrait/potrait12.png"
+    },
+    {
+      "title": "Ice Man 13",
+      "rating": "3.4/5",
+      "img": "/src/assets/etc/potrait/potrait13.png"
+    },
+    {
+      "title": "Ice Man 14",
+      "rating": "4.7/5",
+      "img": "/src/assets/etc/potrait/potrait14.png"
+    },
+    {
+      "title": "Ice Man 15",
+      "rating": "3.6/5",
+      "img": "/src/assets/etc/potrait/potrait15.png"
+    },
+    {
+      "title": "Ice Man 16",
+      "rating": "4.0/5",
+      "img": "/src/assets/etc/potrait/potrait16.png"
+    },
+    {
+      "title": "Ice Man 17",
+      "rating": "3.3/5",
+      "img": "/src/assets/etc/potrait/potrait17.png"
+    },
+    {
+      "title": "Ice Man 18",
+      "rating": "4.4/5",
+      "img": "/src/assets/etc/potrait/potrait18.png"
+    },
+    {
+      "title": "Ice Man 19",
+      "rating": "3.1/5",
+      "img": "/src/assets/etc/potrait/potrait19.png"
+    },
+    {
+      "title": "Ice Man 20",
+      "rating": "5.0/5",
+      "img": "/src/assets/etc/potrait/potrait20.png"
+    },
+    {
+      "title": "Ice Man 21",
+      "rating": "3.9/5",
+      "img": "/src/assets/etc/potrait/potrait21.png"
+    },
+    {
+      "title": "Ice Man 22",
+      "rating": "4.5/5",
+      "img": "/src/assets/etc/potrait/potrait22.png"
+    },
+    {
+      "title": "Ice Man 23",
+      "rating": "3.7/5",
+      "img": "/src/assets/etc/potrait/potrait23.png"
+    },
+    {
+      "title": "Ice Man 24",
+      "rating": "4.8/5",
+      "img": "/src/assets/etc/potrait/potrait24.png"
+    },
+    {
+      "title": "Ice Man 25",
+      "rating": "3.5/5",
+      "img": "/src/assets/etc/potrait/potrait25.png"
+    },
+    {
+      "title": "Ice Man 26",
+      "rating": "4.3/5",
+      "img": "/src/assets/etc/potrait/potrait26.png"
+    },
+    {
+      "title": "Ice Man 27",
+      "rating": "3.8/5",
+      "img": "/src/assets/etc/potrait/potrait27.png"
+    },
+    {
+      "title": "Ice Man 28",
+      "rating": "4.6/5",
+      "img": "/src/assets/etc/potrait/potrait28.png"
+    },
+    {
+      "title": "Ice Man 29",
+      "rating": "3.2/5",
+      "img": "/src/assets/etc/potrait/potrait29.png"
+    },
+    {
+      "title": "Ice Man 30",
+      "rating": "4.9/5",
+      "img": "/src/assets/etc/potrait/potrait30.png"
+    },
+    {
+      "title": "Ice Man 31",
+      "rating": "3.4/5",
+      "img": "/src/assets/etc/potrait/potrait31.png"
+    },
+    {
+      "title": "Ice Man 32",
+      "rating": "4.7/5",
+      "img": "/src/assets/etc/potrait/potrait32.png"
+    }
+  ],
+  "landscapes": [
+    {
+      "title": "Iron Man 1",
+      "rating": "4.3/5",
+      "img": "/src/assets/etc/landscape/image1.png"
+    },
+    {
+      "title": "Iron Man 2",
+      "rating": "3.7/5",
+      "img": "/src/assets/etc/landscape/image2.png"
+    },
+    {
+      "title": "Iron Man 3",
+      "rating": "4.8/5",
+      "img": "/src/assets/etc/landscape/image3.png"
+    },
+    {
+      "title": "Iron Man 4",
+      "rating": "3.9/5",
+      "img": "/src/assets/etc/landscape/image4.png"
+    },
+    {
+      "title": "Iron Man 5",
+      "rating": "4.5/5",
+      "img": "/src/assets/etc/landscape/image5.png"
+    },
+    {
+      "title": "Iron Man 6",
+      "rating": "3.2/5",
+      "img": "/src/assets/etc/landscape/image6.png"
+    },
+    {
+      "title": "Iron Man 7",
+      "rating": "4.1/5",
+      "img": "/src/assets/etc/landscape/image7.png"
+    },
+    {
+      "title": "Iron Man 8",
+      "rating": "4.9/5",
+      "img": "/src/assets/etc/landscape/image8.png"
+    },
+    {
+      "title": "Iron Man 9",
+      "rating": "3.5/5",
+      "img": "/src/assets/etc/landscape/image9.png"
+    },
+    {
+      "title": "Iron Man 10",
+      "rating": "4.6/5",
+      "img": "/src/assets/etc/landscape/image10.png"
+    },
+    {
+      "title": "Iron Man 11",
+      "rating": "3.8/5",
+      "img": "/src/assets/etc/landscape/image11.png"
+    },
+    {
+      "title": "Iron Man 12",
+      "rating": "4.2/5",
+      "img": "/src/assets/etc/landscape/image12.png"
+    },
+    {
+      "title": "Iron Man 13",
+      "rating": "3.4/5",
+      "img": "/src/assets/etc/landscape/image13.png"
+    },
+    {
+      "title": "Iron Man 14",
+      "rating": "4.7/5",
+      "img": "/src/assets/etc/landscape/image14.png"
+    },
+    {
+      "title": "Iron Man 15",
+      "rating": "3.6/5",
+      "img": "/src/assets/etc/landscape/image15.png"
+    },
+    {
+      "title": "Iron Man 16",
+      "rating": "4.0/5",
+      "img": "/src/assets/etc/landscape/image16.png"
+    },
+    {
+      "title": "Iron Man 17",
+      "rating": "3.3/5",
+      "img": "/src/assets/etc/landscape/image17.png"
+    },
+    {
+      "title": "Iron Man 18",
+      "rating": "4.4/5",
+      "img": "/src/assets/etc/landscape/image18.png"
+    },
+    {
+      "title": "Iron Man 19",
+      "rating": "3.1/5",
+      "img": "/src/assets/etc/landscape/image19.png"
+    },
+    {
+      "title": "Iron Man 20",
+      "rating": "5.0/5",
+      "img": "/src/assets/etc/landscape/image20.png"
+    },
+    {
+      "title": "Iron Man 21",
+      "rating": "3.9/5",
+      "img": "/src/assets/etc/landscape/image21.png"
+    },
+    {
+      "title": "Iron Man 22",
+      "rating": "4.5/5",
+      "img": "/src/assets/etc/landscape/image22.png"
+    }
+  ]
+}
