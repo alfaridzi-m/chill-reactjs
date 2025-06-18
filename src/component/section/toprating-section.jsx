@@ -33,7 +33,7 @@ const TopratingSection = ({title}) => {
                             <FontAwesomeIcon icon={faArrowRight} className="text-xl text-white"/>
                         </button>
                     </div>
-                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full">
+                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full">
                     <CardPortrait title="Satu" indexx="1" top/>     
                     <CardPortrait title="Satu" indexx="2" />    
                     <CardPortrait title="Satu" indexx="3" />    

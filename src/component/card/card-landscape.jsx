@@ -17,8 +17,8 @@ console.log({data});
 function CardLandscape({title, indexx}) {
   const imageData = data [indexx]
   return (
-  <div className="flex flex-col relative flex-shrink-0 min-w-[350px] w-1/4">
-      <img src={imageData.image} className="z-10 w-full h-auto object-cover" />
+  <div className="flex flex-col relative flex-shrink-0 min-w-[350px] w-1/4 hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer">
+    <img src={imageData.image} className="z-10 w-full h-auto object-cover" />
       <div className="flex flex-row bottom-0 font-bold text-sm md:text-xl absolute z-20 w-full justify-around align-middle items-center h-1/4 bg-linear-to-t from-black ">
           <h4>{title}</h4>
           <div className="flex flex-row gap-1.5 items-center">

@@ -32,7 +32,7 @@ const TrandingSection = ({title}) => {
                             <FontAwesomeIcon icon={faArrowRight} className="text-xl text-white"/>
                         </button>
                     </div>
-                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full z-0">
+                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full z-0">
                     <CardPortrait title="true" indexx="14" top/>     
                     <CardPortrait title="Satu" indexx="15" top/>    
                     <CardPortrait title="Satu" indexx="16" top/>    

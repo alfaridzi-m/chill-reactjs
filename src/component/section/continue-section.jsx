@@ -32,7 +32,7 @@ const ContinueSection = () => {
                             <FontAwesomeIcon icon={faArrowRight} className="text-xl text-white"/>
                         </button>
                     </div>
-                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full">
+                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full">
                         <CardLandscape title="Suzume" indexx={0}/>
                         <CardLandscape title="Megan" indexx={1}/>
                         <CardLandscape title="Jurassic World" indexx={2}/>
