@@ -19,9 +19,9 @@ const TopratingSection = ({title}) => {
     
     return (
         <>
-           <section className="h-1/4 w-full bg-bl pl-5 md:mt-10 text-white my-5 md:px-20" >
+           <section className="h-1/4 w-full bg-bl pl-5 md:mt-10 text-white my-5 md:px-20 z-20" >
             <div className="">
-                <div className="flex flex-col gap-5 h-full w-full relative">
+                <div className="flex flex-col gap-5 h-full w-full relative z-10">
                     {title && (
                     <h3 className="text-xl font-bold xl:text-3xl">Top Rating Film dan Series Hari Ini</h3>)}
                     <div className="w-full md:flex flex-row z-20 absolute top-1/2 -translate-y-1/2 hidden">
@@ -33,7 +33,7 @@ const TopratingSection = ({title}) => {
                             <FontAwesomeIcon icon={faArrowRight} className="text-xl text-white"/>
                         </button>
                     </div>
-                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full">
+                    <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full z-0">
                     <CardPortrait title="Satu" indexx="1" top/>     
                     <CardPortrait title="Satu" indexx="2" />    
                     <CardPortrait title="Satu" indexx="3" />    
