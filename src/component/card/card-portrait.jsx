@@ -36,14 +36,20 @@ function CardPortrait({indexx,top,baru,premium}) {
         <div className="bg-[#B7A207] text-white text-center text-xs xl:text-base 2xl:text-xl py-1 h-fit px-2 absolute top-2 md:top-4 left-2 md:left-4 rounded-full"><p>Episode Baru</p></div>
       )}
     </div>
-    <div className=" absolute z-50 w-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-90 rounded-lg p-4 hidden group-hover:flex flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 group-hover:delay-2000 transition-all duration-300">
+    <div className="absolute z-50 md:w-[500px] h-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-600 bg-opacity-90 rounded-lg p-4 hidden group-hover:flex flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all duration-300 gap-5"
+     style={{ transform: "translate(0,0)", zIndex: 9999 }}>
       <img src={imageDataLandscape.image} className="h-auto w-full object-cover" />
       <div className="flex flex-row justify-between">
-        <div className="flex flex-row">
-          <button className="bg-white border-1 border-white rounded-full w-5 h-5">Play</button>
-          <button className="bg-white border-1 border-black rounded-full w-5 h-5">+</button>
+        <div className="flex flex-row gap-3">
+          <button className="bg-white border-1 border-white rounded-full w-10 h-10">O</button>
+          <button className="bg-white border-1 border-black rounded-full w-10 h-10">+</button>
         </div>
         <div className="w-fit rounded-full border-2 border-white">Detail</div>
+      </div>
+      <div className="flex flex-row justify-between">
+        <p>Genre</p>
+        <p>Genre</p>
+        <p>Genre</p>
       </div>
     </div>
 

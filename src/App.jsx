@@ -14,7 +14,7 @@ const App = () => {
        <Route path="/login" element={<Login/>} />
        <Route path="/register" element={<Register/>} />
        <Route path="/daftarsaya" element={<Daftarsaya/>} />
-       <Route path="/chill-reactjs" element={<Mainpage/>} />
+       <Route path="/" element={<Mainpage/>} />
        <Route path="*" element={<NoPage/>} />
      </Routes>
     </BrowserRouter>
