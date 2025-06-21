@@ -6,6 +6,7 @@ import NewrilisSection from "../component/section/newrilis-section"
 import Topsection from "../component/section/top-section"
 import TopratingSection from "../component/section/toprating-section"
 import TrandingSection from "../component/section/tranding-section"
+import { useState, useEffect } from "react"
 
 const Mainpage = () => {
     return (

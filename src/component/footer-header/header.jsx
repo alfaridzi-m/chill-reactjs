@@ -10,7 +10,7 @@ const Header = () => {
             <header className="bg-black px-3.5 py-3.5 md:px-20 md:py-5 flex-wrap w-full fixed text-white shadow-xl z-50 top-0">
                 <nav className="flex flex-row justify-around md:justify-between h-fit">
                     <ul className="flex flex-row gap-4 md:gap-20 items-center  text-base md:text-xl box-border">
-                        <li className="flex flex-row gap-1 items-end"><img src={Logo} href="chill.html" className="w-7 md:w-12"/><img className="w-25 hidden md:flex p-0" src={Chill} alt="-" /> </li>
+                        <li className="flex flex-row gap-1 items-end"><Link to='/'><img src={Logo} href="chill.html" className="w-7 md:w-12"/></Link><Link to='/'><img className="w-25 hidden md:flex p-0" src={Chill} alt="-" /></Link> </li>
                         <li className="hover:bg-gray-800 p-2 hover:rounded-xl hover:border-0.5"><Link to='/Series'>Series</Link></li>
                         <li className="hover:bg-gray-800 p-2 hover:rounded-xl hover:border-0.5 " ><Link to='/Series'>Film</Link></li>
                         <li className="hover:bg-gray-800 p-2 hover:rounded-xl hover:border-0.5 text-ellipsis whitespace-nowrap overflow-hidden"><Link to='/daftarsaya'>Daftar Saya</Link></li>

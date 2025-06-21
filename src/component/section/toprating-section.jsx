@@ -34,19 +34,19 @@ const TopratingSection = ({title}) => {
                         </button>
                     </div>
                     <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full z-0">
-                    <CardPortrait title="Satu" indexx="1" top/>     
-                    <CardPortrait title="Satu" indexx="2" />    
-                    <CardPortrait title="Satu" indexx="3" />    
-                    <CardPortrait title="Satu" indexx="4" top/>    
-                    <CardPortrait title="Satu" indexx="5" top/>    
-                    <CardPortrait title="Satu" indexx="6" />    
-                    <CardPortrait title="Satu" indexx="7" top/>    
-                    <CardPortrait title="Satu" indexx="8" />    
-                    <CardPortrait title="Satu" indexx="9" />    
-                    <CardPortrait title="Satu" indexx="10" top/>    
-                    <CardPortrait title="Satu" indexx="11" />    
-                    <CardPortrait title="Satu" indexx="12" top/>    
-                    <CardPortrait title="Satu" indexx="13" />    
+                    <CardPortrait indexx="2" />    
+                    <CardPortrait indexx="1" top/>     
+                    <CardPortrait indexx="3" />    
+                    <CardPortrait indexx="4" top/>    
+                    <CardPortrait indexx="5" top/>    
+                    <CardPortrait indexx="6" />    
+                    <CardPortrait indexx="7" top/>    
+                    <CardPortrait indexx="8" />    
+                    <CardPortrait indexx="9" />    
+                    <CardPortrait indexx="10" top/>    
+                    <CardPortrait indexx="11" />    
+                    <CardPortrait indexx="12" top/>    
+                    <CardPortrait indexx="13" />    
                     </div>
                  </div>
              </div>
