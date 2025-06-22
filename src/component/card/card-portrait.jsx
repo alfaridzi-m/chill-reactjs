@@ -74,7 +74,7 @@ function CardPortrait({indexx,top,baru,premium}) {
         <div className="bg-[#B7A207] text-white text-center text-xs xl:text-base 2xl:text-xl py-1 h-fit px-2 absolute top-2 md:top-4 left-2 md:left-4 rounded-full"><p>Episode Baru</p></div>
       )}
     </div>
-    <div className="absolute z-40 md:w-[200px] lg:w-[400px] w-[150px] h-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-950 bg-opacity-90 rounded-lg p-4 flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all duration-400 gap-5 text-white"
+    <div className="absolute z-40 md:w-[200px] lg:w-[400px] w-[150px] h-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-950 bg-opacity-90 rounded-lg p-4 flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all group-hover:scale-105 duration-400 gap-5 text-white delay-100"
      style={{ transform: "translate(0,0)", zIndex: 9999 }}>
       <img src={imageDataLandscape.image} className="h-auto w-full object-cover" />
       <div className="flex flex-row justify-between mt-5 text-[12px] md:text-sm lg:text-xl">
