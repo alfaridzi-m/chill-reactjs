@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
-const TopratingSection = ({title}) => {
+const TopratingSection = ({title,setDetailData}) => {
         const scrollRef =useRef(null)
         const scrollLeft = () => {
             if (scrollRef.current) {
@@ -34,19 +34,19 @@ const TopratingSection = ({title}) => {
                     </div>
                     <div className="relative overflow-visible z-0">
                     <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto overflow-y-hidden relative z-0 w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full">
-                    <CardPortrait title="Satu" indexx="1" top/>     
-                    <CardPortrait title="Satu" indexx="2" />    
-                    <CardPortrait title="Satu" indexx="3" />    
-                    <CardPortrait title="Satu" indexx="4" top/>    
-                    <CardPortrait title="Satu" indexx="5" top/>    
-                    <CardPortrait title="Satu" indexx="6" />    
-                    <CardPortrait title="Satu" indexx="7" top/>    
-                    <CardPortrait title="Satu" indexx="8" />    
-                    <CardPortrait title="Satu" indexx="9" />    
-                    <CardPortrait title="Satu" indexx="10" top/>    
-                    <CardPortrait title="Satu" indexx="11" />    
-                    <CardPortrait title="Satu" indexx="12" top/>    
-                    <CardPortrait title="Satu" indexx="13" />    
+                    <CardPortrait title="Satu" indexx="1"  setDetailData={setDetailData} top/>     
+                    <CardPortrait title="Satu" indexx="2"  setDetailData={setDetailData} />    
+                    <CardPortrait title="Satu" indexx="3"  setDetailData={setDetailData} />    
+                    <CardPortrait title="Satu" indexx="4"  setDetailData={setDetailData} top/>    
+                    <CardPortrait title="Satu" indexx="5"  setDetailData={setDetailData} top/>    
+                    <CardPortrait title="Satu" indexx="6"  setDetailData={setDetailData} />    
+                    <CardPortrait title="Satu" indexx="7"  setDetailData={setDetailData} top/>    
+                    <CardPortrait title="Satu" indexx="8"  setDetailData={setDetailData} />    
+                    <CardPortrait title="Satu" indexx="9"  setDetailData={setDetailData} />    
+                    <CardPortrait title="Satu" indexx="10" setDetailData={setDetailData}  top/>    
+                    <CardPortrait title="Satu" indexx="11" setDetailData={setDetailData}  />    
+                    <CardPortrait title="Satu" indexx="12" setDetailData={setDetailData}  top/>    
+                    <CardPortrait title="Satu" indexx="13" setDetailData={setDetailData}  />    
                     </div>
                     </div>
                  </div>

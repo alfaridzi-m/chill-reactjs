@@ -23,7 +23,7 @@ const imageLandscape = Object.keys(dataLandscape).map((path) => {
   };
 });
 
-function CardPortrait({indexx,top,baru,premium}) {
+function CardPortrait({indexx,top,baru,premium,setDetailData}) {
   const imageData = data [indexx]
   const imageDataLandscape = imageLandscape [indexx]
   const [showNotification, setShowNotification] = useState(false)
@@ -87,7 +87,16 @@ function CardPortrait({indexx,top,baru,premium}) {
           <button className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black" onClick={toggleAdd}>{added ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faPlus} />} </button>
           
         </div>
-        <div className="flex items-center justify-center lg:w-10 lg:h-10 w-5 h-5 rounded-full border-2 border-white px-3 hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faChevronDown} /></div>
+        <div onClick={() => setDetailData({
+          id:indexx,
+          title: `Film ${indexx}`,
+          image:imageData.image,
+          landscape: imageDataLandscape.landscape,
+          rating : `${(Math.random()*2+3).toFixed(1)}/5`,
+          genre:["Action","Horror","Thriller"]
+        })}
+
+        className="flex items-center justify-center lg:w-10 lg:h-10 w-5 h-5 rounded-full border-2 border-white px-3 hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faChevronDown} /></div>
       </div>
       <div className="flex flex-row justify-between mt-5">
         <p>Genre</p>

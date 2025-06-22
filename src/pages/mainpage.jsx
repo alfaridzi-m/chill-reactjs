@@ -8,15 +8,15 @@ import TopratingSection from "../component/section/toprating-section"
 import TrandingSection from "../component/section/tranding-section"
 import { useState, useEffect } from "react"
 
-const Mainpage = () => {
+const Mainpage = ({ setDetailData }) => {
     return (
         <>
             <Header/>
-            <Topsection/>
+            <Topsection />
             <ContinueSection />
-            <TopratingSection  title />
-            <TrandingSection title/>
-            <NewrilisSection title/>
+            <TopratingSection  title setDetailData={setDetailData}/>
+            <TrandingSection title setDetailData={setDetailData}/>
+            <NewrilisSection title setDetailData={setDetailData}/>
             <Footer/>
         </>
     )
