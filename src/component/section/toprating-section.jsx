@@ -1,8 +1,10 @@
 import { useRef } from "react";
-import CardPortrait from "../card/card-portrait"
+import CardPortrait from "../card/card-portrait2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios';
+import { useEffect, useState } from "react";
 
 const TopratingSection = ({title,setDetailData}) => {
         const scrollRef =useRef(null)
@@ -16,6 +18,49 @@ const TopratingSection = ({title,setDetailData}) => {
                 scrollRef.current.scrollBy({left:300, behavior:'smooth'})
             }
         }
+
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Definisikan URL dan options untuk Axios
+    const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=3';
+    const options = {
+      headers: {
+        accept: 'application/json',
+        // PENTING: Sebaiknya, simpan API Key Anda di environment variable (.env)
+        // dan jangan menuliskannya langsung di kode untuk alasan keamanan.
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZTA2ZTRjMmQwOTNjMTI0OTMxZDQxNjYxZjM3YmFjOCIsIm5iZiI6MTc1MDIzMjc3MS41NjQsInN1YiI6IjY4NTI2ZWMzYmYyZGYxYTY0MjBlN2YzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-Dk3wu3CuVCN7CZScRLaWVTFEZRNC5dvyG9ndc3-D0Q'
+      }
+    };
+
+    // Buat fungsi async untuk fetching data
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(url, options);
+        // Data film dari TMDB ada di dalam 'response.data.results'
+        setMovies(response.data.results);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMovies();
+  }, []); // Array dependensi kosong [] agar useEffect hanya berjalan sekali saat komponen mount
+
+  // Tampilkan pesan loading saat data sedang diambil
+  if (loading) {
+    return <div>Loading movies...</div>;
+  }
+
+  // Tampilkan pesan error jika terjadi kesalahan
+  if (error) {
+    return <div>Error fetching data: {error.message}</div>;
+  }
+console.log(movies);
     
     return (
         <>
@@ -34,19 +79,21 @@ const TopratingSection = ({title,setDetailData}) => {
                         </button>
                     </div>
                     <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto w-full p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full z-0">
-                    <CardPortrait indexx="2" setDetailData={setDetailData} />    
-                    <CardPortrait indexx="1" setDetailData={setDetailData} top/>     
-                    <CardPortrait indexx="3" setDetailData={setDetailData}/>    
-                    <CardPortrait indexx="4" setDetailData={setDetailData} top/>    
-                    <CardPortrait indexx="5" setDetailData={setDetailData} top/>    
-                    <CardPortrait indexx="6" setDetailData={setDetailData} />    
-                    <CardPortrait indexx="7" setDetailData={setDetailData} top/>    
-                    <CardPortrait indexx="8" setDetailData={setDetailData}/>    
-                    <CardPortrait indexx="9" setDetailData={setDetailData}/>    
-                    <CardPortrait indexx="10" setDetailData={setDetailData} top/>    
-                    <CardPortrait indexx="11" setDetailData={setDetailData}/>    
-                    <CardPortrait indexx="12" setDetailData={setDetailData} top/>    
-                    <CardPortrait indexx="13" setDetailData={setDetailData}/>    
+                    {movies.map((movie) => {
+                        const imagPot = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        const imagLand = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                        return (
+                        <CardPortrait
+                            key={movie.id}
+                            id={movie.id}
+                            title={movie.title}
+                            imagePotrait={imagPot}
+                            imageLandscape={imagLand}
+                            description={movie.overview}
+                            setDetailData={setDetailData}
+                        />
+                        )
+                    })}
                     </div>
                  </div>
              </div>

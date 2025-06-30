@@ -26,12 +26,12 @@ const ModalDetail= ({ detail, onClose }) => {
       >
         &times;
       </button>
-      <img src={detail.image} alt={detail.title} className="w-[400px] rounded mb-4" />
+      <img src={detail.landscape} alt={detail.title} className="w-[400px] rounded mb-4" />
       <h2 className="text-2xl font-bold mb-2">{detail.title}</h2>
       <p>Rating: {detail.rating}</p>
       <p>Genre: {detail.genre.join(", ")}</p>
       <p className="mt-2 text-sm text-gray-300">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        {detail.description}
       </p>
       <div className="mt-4 flex gap-3">
         <button className="bg-white text-black px-4 py-2 rounded cursor-pointer">
