@@ -1,45 +1,66 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-
+import axios from "axios"
 function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru,premium,setDetailData}) {
   const [showNotification, setShowNotification] = useState(false)
   const [notificationText, setNotificationText] = useState("")
-  const isAlreadyAdded = () => {
-    const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    return favorites.some(item => item.id === id);
+  const [added, setAdded] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const API_URL = "https://685f9399c55df675589eaf1d.mockapi.io/api/film/testung"
+  
+  useEffect(() => {
+    const checkFavoriteStatus = async () => {
+      try {
+        const response = await axios.get(`${API_URL}?tmdbId=${id}`)
+        if (response.data && response.data.length > 0) {
+          setAdded(true)
+        }
+      } catch (error) {
+        console.error("Gagal memeriksa status favorit:", error)
+      }
+    }
+
+  checkFavoriteStatus()}, [id])
+  const toggleAdd = async () => {
+    if (isLoading) return
+    setIsLoading(true)
+
+    if (added) {
+      try {
+        await axios.delete(`${API_URL}/${id}`)
+        setNotificationText("Dihapus dari Favorit")
+        setAdded(false)
+      } catch (error) {
+        console.error("Gagal menghapus favorit:", error)
+        setNotificationText("Gagal Menghapus")
+      }
+    } else {
+      const newFavorite = {
+        tmdbId:id,
+        title: title,
+        image: imagePotrait,
+        landscape: imageLandscape,
+        description: description,
+      }
+      console.log(newFavorite)
+
+      try {
+        await axios.post(API_URL, newFavorite)
+        setNotificationText("Ditambah ke Favorit")
+        setAdded(true)
+      } catch (error) {
+        console.error("Gagal menambah favorit:", error)
+        setNotificationText("Gagal Menambah")
+      }
+    }
+    setShowNotification(true)
+    setTimeout(() => setShowNotification(false), 1500)
+    setIsLoading(false)
   }
-  const [added, setAdded] = useState(isAlreadyAdded());
-
-  const toggleAdd = () => {
-  const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-
-  if (added) {  
-    const updated = favorites.filter(item => item.id !== id);
-    localStorage.setItem("myFavorites", JSON.stringify(updated));
-    setNotificationText("Dihapus")
-  } else {
-    const newFavorite = {
-      id: id,
-      image: imagePotrait,
-      landscape: imageLandscape
-    };
-    favorites.push(newFavorite);
-    localStorage.setItem("myFavorites", JSON.stringify(favorites));
-    setNotificationText("Favorite")
-  }
-
-  setAdded(!added);
-  setShowNotification(true)
-  setTimeout(() => {
-    setShowNotification(false)
-  },1000)
-}
-
-
   return (
   
   <div className="group relative flex flex-col flex-shrink-0 min-w-[100px] w-1/7 cursor-pointer">
@@ -69,7 +90,7 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
           
         </div>
         <div onClick={() => setDetailData({
-          id:id,
+          tmdbId:id,
           title: title,
           image:imagePotrait,
           landscape: imageLandscape,
@@ -88,10 +109,10 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
     </div>
 
   </div>
-  );
+  )
 
 
 
 }
 
-export default CardPortrait;
+export default CardPortrait
