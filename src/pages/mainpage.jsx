@@ -13,10 +13,10 @@ const Mainpage = ({ setDetailData }) => {
         <>
             <Header/>
             <Topsection />
-            <ContinueSection />
-            <TopratingSection  title setDetailData={setDetailData}/>
-            <TrandingSection title setDetailData={setDetailData}/>
-            <NewrilisSection title setDetailData={setDetailData}/>
+            <ContinueSection setDetailData={setDetailData}/>
+            <TopratingSection  setDetailData={setDetailData}/>
+            <TrandingSection setDetailData={setDetailData}/>
+            <NewrilisSection setDetailData={setDetailData}/>
             <Footer/>
         </>
     )

@@ -1,10 +1,12 @@
-import { useRef } from "react";
-import CardLandscape from "../card/card-landscape"
+import { useRef, useState, useEffect } from "react";
+import CardLandscape from "../card/card-landscape2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import axios from "axios";
 
-const ContinueSection = () => {
+const ContinueSection = ({setDetailData}) => {
+
     const scrollRef =useRef(null)
     const scrollLeft = () => {
         if (scrollRef.current) {
@@ -16,6 +18,38 @@ const ContinueSection = () => {
             scrollRef.current.scrollBy({left:300, behavior:'smooth'})
         }
     }
+    const [movies, setMovies] = useState([]);
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+    useEffect(() => {
+    const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=4'
+    const token = import.meta.env.VITE_TMDB_BEARER_TOKEN
+    const options = {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+
+    const fetchMovies = async () => {
+      try {
+        const response = await axios.get(url, options);
+        setMovies(response.data.results);
+        console.log(response);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+        fetchMovies();
+    }, []); 
+    if (loading) {
+        return <div>Loading movies...</div>;
+    }
+    if (error) {
+        return <div className="text-red-500 text-center">Error fetching data: {error.message}</div>;
+    } 
     
     return (
         <>
@@ -33,27 +67,25 @@ const ContinueSection = () => {
                         </button>
                     </div>
                     <div ref={scrollRef} className="flex flex-row gap-4 overflow-x-auto p-6 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-track]:bg-gray-500 [&::-webkit-scrollbar-thumb]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full w-full">
-                        <CardLandscape title="Suzume" indexx={0}/>
-                        <CardLandscape title="Megan" indexx={1}/>
-                        <CardLandscape title="Jurassic World" indexx={2}/>
-                        <CardLandscape title="Dilan" indexx={3}/>
-                        <CardLandscape title="Sonic" indexx={4}/>
-                        <CardLandscape title="Spiderman" indexx={5}/>
-                        <CardLandscape title="Guardian Galaxy" indexx={6}/>
-                        <CardLandscape title="Doctor Strange" indexx={8}/>
-                        <CardLandscape title="Black Adam" indexx={9}/>
-                        <CardLandscape title="Devil All The Time" indexx={10}/>
-                        <CardLandscape title="The Batman" indexx={11}/>
-                        <CardLandscape title="Ted Lasso" indexx={12}/>
-                        <CardLandscape title="Don't Look Up" indexx={13}/>
-                        <CardLandscape title="Unknown" indexx={14}/>
-                        <CardLandscape title="Stuart Little" indexx={15}/>
-                        <CardLandscape title="Baymax" indexx={16}/>
-                        <CardLandscape title="Film Korea" indexx={17}/>
-                        <CardLandscape title="Guardian Of The Galaxy" indexx={18}/>
-                        <CardLandscape title="Al of Us Dead" indexx={19}/>
-                        <CardLandscape title="Alice In Borderland" indexx={20}/>
-                        <CardLandscape title="Missing" indexx={21}/>                      
+                    {movies.map((movie) => {
+                        const imagPot = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                        const imagLand = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                        const roundRatting = movie.vote_average.toFixed(1)
+                        return (
+                        <CardLandscape
+                            key={movie.id}
+                            id={movie.id}
+                            title={movie.title}
+                            imagePotrait={imagPot}
+                            imageLandscape={imagLand}
+                            description={movie.overview}
+                            setDetailData={setDetailData}
+                            rating={roundRatting}
+                            
+                        />
+                        )
+                    })}
+                                            
                     </div>
                  </div>
              </div>

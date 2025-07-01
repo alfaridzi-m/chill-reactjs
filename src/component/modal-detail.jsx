@@ -17,8 +17,8 @@ const ModalDetail= ({ detail, onClose }) => {
   return (
   <div className="fixed inset-0 z-[9999] flex items-center justify-center px-4 bg-black/70 backdrop-blur-xs">
     <div
-      className={`bg-[#1a1a1a] text-white rounded-lg max-w-2xl w-fit p-6 relative transition-all duration-200 ease-out
-        ${show ? "scale-100" : "scale-40"}`}
+      className={`bg-[#1a1a1a] flex flex-col justify-center text-white rounded-lg max-w-2xl w-fit p-6 relative transition-all duration-300 ease-out
+        ${show ? "scale-100" : "scale-20"}`}
     >
       <button
         onClick={handleClose}
@@ -26,13 +26,15 @@ const ModalDetail= ({ detail, onClose }) => {
       >
         &times;
       </button>
-      <img src={detail.landscape} alt={detail.title} className="w-[400px] rounded mb-4" />
-      <h2 className="text-2xl font-bold mb-2">{detail.title}</h2>
-      <p>Rating: {detail.rating}</p>
-      <p>Genre: {detail.genre.join(", ")}</p>
-      <p className="mt-2 text-sm text-gray-300">
-        {detail.description}
-      </p>
+      <div className="flex flex-col justify-center items-center">
+        <img src={detail.landscape} alt={detail.title} className="w-[400px] rounded mb-4" />
+        <h2 className="text-2xl font-bold mb-2">{detail.title}</h2>
+        <p>Rating: {detail.rating}</p>
+        <p>Genre: {detail.genre.join(", ")}</p>
+        <p className="mt-2 text-sm text-gray-300 text-justify">
+          {detail.description}
+        </p>
+      </div>
       <div className="mt-4 flex gap-3">
         <button className="bg-white text-black px-4 py-2 rounded cursor-pointer">
           <FontAwesomeIcon icon={faPlay}/>
