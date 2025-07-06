@@ -58,7 +58,7 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
         setAdded(true)
       } catch (error) {
         console.error("Gagal menambah favorit:", error)
-        setNotificationText("Gagal Menambah")
+        setNotificationText("Gagal Menambahkan")
       }
     }
     setShowNotification(true)
