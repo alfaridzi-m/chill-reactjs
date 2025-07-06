@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react"
 import CardPortrait from "../card/card-portrait2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios";
+import axios from "axios"
 
 const NewrilisSection = ({title,setDetailData}) => {
     const scrollRef =useRef(null)
@@ -18,7 +18,7 @@ const NewrilisSection = ({title,setDetailData}) => {
             }
         }
 
-    const [movies, setMovies] = useState([]);
+    const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
@@ -30,28 +30,27 @@ const NewrilisSection = ({title,setDetailData}) => {
         accept: 'application/json',
         Authorization: `Bearer ${token}`
       }
-    };
+    }
 
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(url, options);
-        setMovies(response.data.results);
-        console.log(response);
+        const response = await axios.get(url, options)
+        setMovies(response.data.results)
       } catch (err) {
-        setError(err);
+        setError(err)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
 
-    fetchMovies();
-  }, []); 
+    fetchMovies()
+  }, []) 
   if (loading) {
-    return <div>Loading movies...</div>;
+    return <div>Loading movies...</div>
   }
   if (error) {
-    return <div className="text-red-500 text-center">Error fetching data: {error.message}</div>;
+    return <div className="text-red-500 text-center">Error fetching data: {error.message}</div>
   } 
     return (
         <>
