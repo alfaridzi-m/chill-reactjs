@@ -20,9 +20,13 @@ const Header = () => {
                         <div className="relative group flex flex-col">
                             <span><FontAwesomeIcon icon={faCircleChevronDown} className="cursor-pointer text-l md:text-2xl text-white" /></span>
                             <div className="absolute top-3 right-2 hidden group-hover:flex flex-col px-3 py-1 rounded-xl bg-black border-1 border-gray-800 text-white md:w-35 gap-3">
-                                <a className="hover:text-blue-600"/><Link to='/account' >Akun saya</Link>
-                                <a className="hover:text-blue-600"/><Link to='/setting' >Pengaturan</Link>
-                                <a className="hover:text-blue-600"/><Link to='/login' >Keluar</Link>
+                                <Link to='/account' className="hover:text-blue-600">Akun saya</Link>
+                                <Link to='/setting' className="hover:text-blue-600">Pengaturan</Link>
+                                <Link to='/login' className="hover:text-blue-600"
+                                onClick={() => {
+                                    localStorage.setItem("isLoggedIn","false")
+                                }}
+                                >Keluar</Link>
                             </div>  
                         </div>  
                     </div>  
