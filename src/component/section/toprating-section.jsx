@@ -72,6 +72,7 @@ const TopratingSection = ({setDetailData}) => {
                     {movies.map((movie) => {
                         const imagPot = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
                         const imagLand = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                        const roundRatting = movie.vote_average.toFixed(1)
 
                         return (
                         <CardPortrait
@@ -82,6 +83,8 @@ const TopratingSection = ({setDetailData}) => {
                             imageLandscape={imagLand}
                             description={movie.overview}
                             setDetailData={setDetailData}
+                            rating={roundRatting}
+
                             
                         />
                         )

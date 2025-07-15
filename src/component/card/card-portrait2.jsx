@@ -7,7 +7,8 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import axios from "axios"
 const API_URL = "https://685f9399c55df675589eaf1d.mockapi.io/api/film/testung"
 
-function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru,premium,setDetailData}) {
+function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru,premium,setDetailData,rating}) {
+
   const [showNotification, setShowNotification] = useState(false)
   const [notificationText, setNotificationText] = useState("")
   const [added, setAdded] = useState(false)
@@ -15,15 +16,11 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
   
   useEffect(() => {
     const checkFavoriteStatus = async () => {
-      try {
         const response = await axios.get(`${API_URL}`)
         const isMatch = response.data.some((item) => item.tmdbId === id)
         if (isMatch) {
           setAdded(true)
         }
-      } catch (error) {
-        console.error("Gagal memeriksa status favorit:", error)
-      }
     }
     checkFavoriteStatus()}, 
     [id])
@@ -80,10 +77,10 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
         <div className="bg-[#B7A207] text-white text-center text-xs xl:text-base 2xl:text-xl py-1 h-fit px-2 absolute top-2 md:top-4 left-2 md:left-4 rounded-full"><p>Episode Baru</p></div>
       )}
     </div>
-    <div className="absolute z-40 md:w-[200px] lg:w-[400px] w-[150px] h-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-950 bg-opacity-90 rounded-lg p-4 flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all group-hover:scale-105 duration-400 gap-5 text-white delay-100"
+    <div className="absolute z-40 md:w-[200px] lg:w-[400px] w-[150px] h-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-950 bg-opacity-90 rounded-lg flex-col pointer-events-none group-hover:pointer-events-auto opacity-0 group-hover:opacity-100 transition-all group-hover:scale-105 duration-400 gap-3 text-white delay-100"
      style={{ transform: "translate(0,0)", zIndex: 9999 }}>
-      <img src={imageLandscape} className="h-auto w-full object-cover xl:rounded-xl" />
-      <div className="flex flex-row justify-between mt-5 text-[12px] md:text-sm lg:text-xl">
+      <img src={imageLandscape} className="h-auto w-full object-cover xl:rounded-t-xl" />
+      <div className="flex flex-row justify-between mt-3 text-[12px] md:text-sm lg:text-xl p-4">
         <div className="flex flex-row gap-3 justify-center items-center">
           <button className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faPlay} /></button>
           <div className="relative"><div
@@ -94,18 +91,18 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
           
         </div>
         <div onClick={() => setDetailData({
-          tmdbId:id,
+          tmdbId:id,  
           title: title,
           image:imagePotrait,
           landscape: imageLandscape,
           description:description,
-          rating : `${(Math.random()*2+3).toFixed(1)}/5`,
+          rating : rating,
           genre:["Action","Horror","Thriller"]
         })}
 
         className="flex items-center justify-center lg:w-10 lg:h-10 w-5 h-5 rounded-full border-2 border-white px-3 hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faChevronDown} /></div>
       </div>
-      <div className="flex flex-row justify-between mt-5">
+      <div className="flex flex-row justify-between mt-2 p-4">
         <p>Genre</p>
         <p>Genre</p>
         <p>Genre</p>
