@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'
 const Header = () => {
+    const userCurrent = JSON.parse(localStorage.getItem("currentUser"))
     return (
         <>
             <header className="bg-black px-3.5 py-3.5 md:px-20 md:py-5 flex-wrap w-full fixed text-white shadow-xl z-50 top-0">
@@ -16,7 +17,12 @@ const Header = () => {
                         <li className="hover:bg-gray-800 p-2 hover:rounded-xl hover:border-0.5 text-ellipsis whitespace-nowrap overflow-hidden"><Link to='/daftarsaya'>Daftar Saya</Link></li>
                     </ul>
                     <div className="flex flex-row w-1/5 items-center gap-1.5 justify-end">
-                        <img className=" w-6 rounded-full hover:rounded-sm cursor-pointer border-1 border-gray-500 md:w-10" src={User} alt="user"/>
+                        {userCurrent && (
+                            <Link to={`/profile/${userCurrent.username}`} className="flex-row flex items-center gap-3">
+                                <p className="text-white font-bold">{userCurrent.username}</p>
+                                <img className=" w-6 rounded-full hover:rounded-sm cursor-pointer border-1 border-gray-500 md:w-10" src={User} alt="user"/>
+                            </Link>
+                        )}
                         <div className="relative group flex flex-col">
                             <span><FontAwesomeIcon icon={faCircleChevronDown} className="cursor-pointer text-l md:text-2xl text-white" /></span>
                             <div className="absolute top-3 right-2 hidden group-hover:flex flex-col px-3 py-1 rounded-xl bg-black border-1 border-gray-800 text-white md:w-35 gap-3">

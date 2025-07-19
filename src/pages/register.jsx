@@ -5,38 +5,55 @@ import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+import axios from "axios"
 
+const apiRegister = async (username,password)  => {
+    const apiUrl = "https://685f9399c55df675589eaf1d.mockapi.io/api/film/user"
+    const getResponse = await axios.get(apiUrl)
+    console.log(getResponse.data)
+    const isUserTaken = getResponse.data.find(user => user.username === username)
+    if (isUserTaken) {
+        throw new Error("Username sudah digunakan")
+    }
+    const newUser = {username,password}
+    const addResponse = await axios.post(apiUrl,newUser)
+    return addResponse.data
+}
 
 const Register = () => {
-    const [showPassword, setShowPassword] = useState(false)
-    const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword)
-    }
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState("")
     const navigate = useNavigate()
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword)
+    }
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault()
+        setError("")
         if (confirmPassword !== password) {
-            alert("Passwords do not match");
+            setError("Passwords do not match")
             return;
           }
-        const existingUsers = JSON.parse(localStorage.getItem("users")) || []
-        const isUsernameTaken = existingUsers.some(u => u.username === username)
-        if (isUsernameTaken) {
-            alert("User sudah digunakan")
-            return
+        setLoading(true)
+
+        try {
+            const registeredUser = await apiRegister(username,password)
+            localStorage.setItem("isLoggedIn","true")
+            localStorage.setItem("currentUser",JSON.stringify(registeredUser))
+            navigate('/')
+        } catch (error) {
+            setError(error.message)
+        } finally {
+            setLoading(false)
         }
-        const newUser = { username,password}
-        existingUsers.push(newUser)
         
-        localStorage.setItem("users", JSON.stringify(existingUsers))
-        localStorage.setItem("isLoggedIn","true")
-        localStorage.setItem("currentUser",JSON.stringify(newUser))
-        navigate('/')
-    }
+
+        }
 
 
     return (
@@ -73,14 +90,16 @@ const Register = () => {
                             <span className="absolute right-2 top-4.5 sm:top-9 sm:right-4 cursor-pointer" onClick={togglePasswordVisibility}><FontAwesomeIcon icon={faEye} className='w-3 md:w-6'/></span>
                         </div>
                         <div className="flex flex-row text-xs justify-between w-full mt-1.5 sm:text-base sm:mt-3">
-                    <p className="text-[rgba(193,194,196,1)]">Sudah punya akun? <Link to='/login'><a className="text-white">Masuk</a></Link></p>
-                </div>  
-                <button className="mt-5 w-full h-7  bg-[rgba(61,65,66,1)] rounded-xl border-[0.5px] hover:bg-gray-400 border-[rgba(231,227,252,0.23)] text-xs font-semibold cursor-pointer sm:h-12  sm:mt-9 sm:rounded-3xl sm:text-base" type="submit">Register</button>
+                    <p className="text-[rgba(193,194,196,1)]">Sudah punya akun? <Link to='/login' className="text-white">Masuk</Link></p>
+                </div>
+                {error && <p className="text-red-500">{error} </p>}  
+                <button className="mt-5 w-full h-7  bg-[rgba(61,65,66,1)] rounded-xl border-[0.5px] hover:bg-gray-400 border-[rgba(231,227,252,0.23)] text-xs font-semibold cursor-pointer sm:h-12  sm:mt-9 sm:rounded-3xl sm:text-base" type="submit">{loading ? "Memproses . . ." : "Register"}</button>
                 <p className="text-[#9D9EA1] text-[10px] mt-1 sm:text-sm sm:mt-2">Atau</p>
                 <div className="w-full h-7 flex mt-1 flex-row items-center justify-center text-xs border-[0.5px] border-[rgba(231,227,252,0.23)] rounded-xl gap-1.5 hover:bg-gray-400 sm:h-12 sm:rounded-3xl sm:text-base sm:mt-2">
                     <img src={Google} alt="Google Logo" className="google-icon h-4 w-4 "/>
                     <a href="#" className="font-semibold">Register dengan Google</a>
                 </div>
+                
                     </form>
                 </div>
                 

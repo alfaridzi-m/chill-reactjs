@@ -24,7 +24,7 @@ const TrandingSection = ({title,setDetailData}) => {
     const [error, setError] = useState(null)
 
   useEffect(() => {
-    const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=7'
+    const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'
     const token = import.meta.env.VITE_TMDB_BEARER_TOKEN
     const options = {
       headers: {
