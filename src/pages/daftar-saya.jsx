@@ -2,23 +2,52 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Footer from "../component/footer-header/footer"
 import Header from "../component/footer-header/header"
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
+import { useFavoriteStore } from "../store/favoriteStore"
 import axios from "axios"
 
+const DaftarSayaSkeleton = () => {
+    return (
+        <>
+            <Header />
+            <div className="mt-20 flex relative flex-col p-5 md:p-20 w-full items-center animate-pulse">
+                <div className="h-8 bg-zinc-700 rounded w-1/3 md:w-1/4 mb-6 self-start lg:ml-5"></div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-4 w-full md:w-[90%]">
+                    {Array.from({ length: 16 }).map((_, index) => (
+                        <div key={index} className="aspect-[2/3] bg-zinc-800 rounded-lg"></div>
+                    ))}
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
+};
 
 const API_DAFTARSAYA_URL = "https://685f9399c55df675589eaf1d.mockapi.io/api/film/testung"
 
 const Daftarsaya = () => {
-    const [daftarSaya, setDaftarSaya] = useState([])
+    const { favorites, removeFromFavorites, addToFavorites } = useFavoriteStore()
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-
+    const [apiData, setApiData] = useState([])
     useEffect(() => {
-        const listDaftar = async () => {
+        const fetchData = async () => {
             try {
                 const response = await axios.get(API_DAFTARSAYA_URL)
-                setDaftarSaya(response.data)
-                console.log(response.data)
+                setApiData(response.data)
+                response.data.forEach(film => {
+
+                    const movieData = {
+                        id: film.id,
+                        title: film.title,
+                        image: film.image,
+                        description: film.description || "",
+                        rating: film.rating || "0"
+                    }
+                    if (!favorites.some(fav => fav.id === film.id)) {
+                        addToFavorites(movieData)
+                    }
+                })
             } catch (err) {
                 console.error("Gagal mengambil list", err)
                 setError("Mohon maaf daftar saya gagal dimuat, silahkan coba lagi")
@@ -26,34 +55,23 @@ const Daftarsaya = () => {
                 setLoading(false)
             }      
         }
-        listDaftar()
-    },[])
+        fetchData()
+    }, [])
 
     const deleteDaftar = async (id) => {
-        const originalList = [...daftarSaya]
-        const update = daftarSaya.filter(film => film.id !== id)
-        setDaftarSaya(update)
-
         try {
+            removeFromFavorites(id)
             await axios.delete(`${API_DAFTARSAYA_URL}/${id}`)
         } catch (error) {
             console.error("Gagal menghapus item:", error)
-            setDaftarSaya(originalList)
             alert("Gagal menghapus film dari daftar.")
         }
     }
 
     if (loading) {
-        return (
-            <>
-                <Header />
-                <div className="mt-20 flex justify-center p-5">
-                    <p className="text-white text-xl">Memuat Daftar Saya...</p>
-                </div>
-                <Footer />
-            </>
-        )
+        return <DaftarSayaSkeleton />
     }
+    
     if (error) {
          return (
             <>
@@ -65,18 +83,17 @@ const Daftarsaya = () => {
             </>
         )
     }
-    console.log(daftarSaya)
     return (
         <>
             <Header/>
             <div className="mt-20 flex relative flex-col p-5 md:p-20 w-full items-center">
             <h5 className="text-left text-white text-2xl md:text-3xl mb-4 font-bold lg:ml-5 w-full md:w-[90%]">Daftar Saya</h5>
             <div className="flex justify-center w-full md:w-[90%]">
-            {daftarSaya.length === 0 ? ( <p className="text-white">Kamu Belum menambahkan Film favorite</p> ) : (
+            {favorites.length === 0 ? ( <p className="text-white">Kamu Belum menambahkan Film favorite</p> ) : (
                 <div className="flex flex-row flex-wrap">
                     <div className="flex-row flex duration-800 opacity-100 group-hover:opacity-0 transition-all group-hover:scale-105 flex-wrap gap-4 justify-center cursor-pointer">
-                    {daftarSaya.map(film => (
-                    <div key={film.tmdbId} className="relative md:w-[120px] lg:w-[200px] w-[100px] hover:scale-105 cursor-pointer transition-all">
+                    {favorites.map(film => (
+                    <div key={film.id} className="relative md:w-[120px] lg:w-[200px] w-[100px] hover:scale-105 cursor-pointer transition-all">
                     <img
                         src={film.image}
                         alt="Film favorit"

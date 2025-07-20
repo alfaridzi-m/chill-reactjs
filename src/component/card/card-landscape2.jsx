@@ -4,41 +4,40 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faPlus, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useFavoriteStore } from "../../store/favoriteStore"
+import { useFilmDetailStore } from "../../store/film"
 
 
-function CardLandscape({title, id, imageLandscape,imagePotrait ,description, rating, setDetailData}) {
+function CardLandscape({title, id, imageLandscape,imagePotrait ,description, rating}) {
   const [showNotification, setShowNotification] = useState(false)
   const [notificationText, setNotificationText] = useState("")
-  const isAlreadyAdded = () => {
-    const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
-    return favorites.some(item => item.id === id);
-  }
-  const [added, setAdded] = useState(isAlreadyAdded());
+  
+  const { favorites, addToFavorites, removeFromFavorites } = useFavoriteStore()
+  const { fetchFilmDetail } = useFilmDetailStore()
+  const added = favorites.some(movie => movie.id === id)
 
   const toggleAdd = () => {
-  const favorites = JSON.parse(localStorage.getItem("myFavorites")) || [];
+    if (added) {  
+      removeFromFavorites(id);
+      setNotificationText("Dihapus dari Favorit")
+    } else {
+      const newFavorite = {
+        id: id,
+        title: title,
+        image: imagePotrait,
+        landscape: imageLandscape,
+        description: description,
+        rating: rating
+      };
+      addToFavorites(newFavorite);
+      setNotificationText("Ditambah ke Favorit")
+    }
 
-  if (added) {  
-    const updated = favorites.filter(item => item.id !== id);
-    localStorage.setItem("myFavorites", JSON.stringify(updated));
-    setNotificationText("Dihapus")
-  } else {
-    const newFavorite = {
-      id: id,
-      image: imagePotrait,
-      landscape: imageLandscape
-    };
-    favorites.push(newFavorite);
-    localStorage.setItem("myFavorites", JSON.stringify(favorites));
-    setNotificationText("Favorite")
+    setShowNotification(true)
+    setTimeout(() => {
+      setShowNotification(false)
+    },1000)
   }
-
-  setAdded(!added);
-  setShowNotification(true)
-  setTimeout(() => {
-    setShowNotification(false)
-  },1000)
-}
 
   return (
   <div className="group relative flex flex-col flex-shrink-0 min-w-[350px] w-1/4 cursor-pointer">
@@ -66,14 +65,14 @@ function CardLandscape({title, id, imageLandscape,imagePotrait ,description, rat
             <button className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black" onClick={toggleAdd}>{added ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faPlus} />} </button>
 
           </div>
-           <div onClick={() => setDetailData({
-            id:id,
+           <div onClick={() => fetchFilmDetail({
+            id: id,
             title: title,
-            image:imagePotrait,
+            image: imagePotrait,
             landscape: imageLandscape,
-            description:description,
-            rating : rating,
-            genre:["Action","Horror","Thriller"]
+            description: description,
+            rating: rating,
+            genre: ["Action","Horror","Thriller"]
           })}
           className="flex items-center justify-center lg:w-10 lg:h-10 w-5 h-5 rounded-full border-2 border-white px-3 hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faChevronDown} /></div>
         </div>

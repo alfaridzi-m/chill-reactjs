@@ -1,17 +1,21 @@
 import { useEffect,useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { useFilmDetailStore } from "../store/film";
 
 const ModalDetail= ({ detail, onClose }) => {
   const[show,setShow] =useState(false)
+  const { resetFilmDetail } = useFilmDetailStore()
+  
   useEffect(()=>{
     setTimeout(() => setShow(true),10)
   },[])
+  
   const handleClose= () => {
     setShow(false)
     setTimeout(()=> {
       onClose()
-      
+      resetFilmDetail()
     },200)
   }
   return (
@@ -29,8 +33,8 @@ const ModalDetail= ({ detail, onClose }) => {
         <img src={detail.landscape} alt={detail.title} className="w-full rounded-t-xl" />
       <div className="flex flex-col justify-center items-center p-5">
         <h2 className="text-2xl font-bold mb-2">{detail.title}</h2>
-        <p>Rating: {detail.rating}</p>
-        <p>Genre: {detail.genre.join(", ")}</p>
+        <p>Rating: {detail.rating || 'N/A'}</p>
+        <p>Genre: {detail.genre && Array.isArray(detail.genre) ? detail.genre.join(", ") : 'N/A'}</p>
         <p className="mt-2 text-sm text-gray-300 text-justify">
           {detail.description}
         </p>

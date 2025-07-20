@@ -1,9 +1,9 @@
-import { useRef, useState, useEffect } from "react"
+import { useRef, useEffect } from "react"
 import CardLandscape from "../card/card-landscape2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios"
+import { useMovieStore } from "../../store/movieStore"
 
 const ContinueSection = ({setDetailData}) => {
 
@@ -18,31 +18,16 @@ const ContinueSection = ({setDetailData}) => {
             scrollRef.current.scrollBy({left:300, behavior:'smooth'})
         }
     }
-    const [movies, setMovies] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const { 
+      continueWatchingMovies: movies, 
+      continueWatchingLoading: loading, 
+      continueWatchingError: error, 
+      fetchContinueWatchingMovies 
+    } = useMovieStore()
+    
     useEffect(() => {
-    const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=4'
-    const token = import.meta.env.VITE_TMDB_BEARER_TOKEN
-    const options = {
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    }
-
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get(url, options)
-        setMovies(response.data.results)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-        fetchMovies()
-    }, []) 
+        fetchContinueWatchingMovies()
+    }, [fetchContinueWatchingMovies]) 
     if (loading) {
         return <div>Loading movies...</div>
     }

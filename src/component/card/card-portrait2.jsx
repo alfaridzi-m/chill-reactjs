@@ -4,55 +4,46 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import axios from "axios"
-const API_URL = "https://685f9399c55df675589eaf1d.mockapi.io/api/film/testung"
+import { useFavoriteStore } from "../../store/favoriteStore"
+import { useFilmDetailStore } from "../../store/film"
+import { useNavigate } from "react-router-dom"
 
-function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru,premium,setDetailData,rating}) {
+function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru,premium,rating}) {
 
   const [showNotification, setShowNotification] = useState(false)
   const [notificationText, setNotificationText] = useState("")
-  const [added, setAdded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+
+  const { favorites, addToFavorites, removeFromFavorites } = useFavoriteStore()
+  const { fetchFilmDetail } = useFilmDetailStore()
+  const navigate = useNavigate()
+  const added = favorites.some(movie => movie.id === id)
   
-  useEffect(() => {
-    const checkFavoriteStatus = async () => {
-        const response = await axios.get(`${API_URL}`)
-        const isMatch = response.data.some((item) => item.tmdbId === id)
-        if (isMatch) {
-          setAdded(true)
-        }
-    }
-    checkFavoriteStatus()}, 
-    [id])
   const toggleAdd = async () => {
     if (isLoading) return
     setIsLoading(true)
 
     if (added) {
       try {
-        const getId = await axios.get(`${API_URL}?tmdbId=${id}`)
-        const idDelete = getId.data[0].id
-        await axios.delete(`${API_URL}/${idDelete}`)
+        removeFromFavorites(id)
         setNotificationText("Dihapus dari Favorit")
-        setAdded(false)
       } catch (error) {
         console.error("Gagal menghapus favorit:", error)
         setNotificationText("Gagal Menghapus")
       }
     } else {
       const newFavorite = {
-        tmdbId:id,
+        id: id,
         title: title,
         image: imagePotrait,
         landscape: imageLandscape,
         description: description,
+        rating: rating
       }
-      console.log(newFavorite)
 
       try {
-        await axios.post(API_URL, newFavorite)
+        addToFavorites(newFavorite)
         setNotificationText("Ditambah ke Favorit")
-        setAdded(true)
       } catch (error) {
         console.error("Gagal menambah favorit:", error)
         setNotificationText("Gagal Menambahkan")
@@ -82,7 +73,7 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
       <img src={imageLandscape} className="h-auto w-full object-cover xl:rounded-t-xl" />
       <div className="flex flex-row justify-between mt-3 text-[12px] md:text-sm lg:text-xl p-4">
         <div className="flex flex-row gap-3 justify-center items-center">
-          <button className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faPlay} /></button>
+          <button onClick={() => navigate(`/player/${id}`)} className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faPlay} /></button>
           <div className="relative"><div
                 className={`absolute -top-10 left-2 -translate-x-1/2 text-[10px] md:text-xs bg-white w-[150px] text-black px-2 py-1 rounded shadow-md z-50 transition-opacity duration-300 text-center ${showNotification ? "opacity-100" : "opacity-0 pointer-events-none"}`}>{notificationText}
               </div>
@@ -90,14 +81,14 @@ function CardPortrait({id,imageLandscape,imagePotrait,description,title,top,baru
           <button className="flex justify-center items-center border-1 border-white rounded-full lg:w-10 lg:h-10 w-5 h-5 cursor-pointer hover:bg-white hover:border-black hover:text-black" onClick={toggleAdd}>{added ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faPlus} />} </button>
           
         </div>
-        <div onClick={() => setDetailData({
-          tmdbId:id,  
+        <div onClick={() => fetchFilmDetail({
+          id: id,  
           title: title,
-          image:imagePotrait,
+          image: imagePotrait,
           landscape: imageLandscape,
-          description:description,
-          rating : rating,
-          genre:["Action","Horror","Thriller"]
+          description: description,
+          rating: rating,
+          genre: ["Action","Horror","Thriller"]
         })}
 
         className="flex items-center justify-center lg:w-10 lg:h-10 w-5 h-5 rounded-full border-2 border-white px-3 hover:bg-white hover:border-black hover:text-black"><FontAwesomeIcon icon={faChevronDown} /></div>

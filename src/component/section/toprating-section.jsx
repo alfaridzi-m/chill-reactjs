@@ -1,10 +1,23 @@
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import CardPortrait from "../card/card-portrait2"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
-import { useEffect, useState } from "react"
+import CardSkeleton from "../card/potrait-skeleton"
+import { useMovieStore } from "../../store/movieStore"
+
+const TopRatingSkeleton = () => {
+    return (
+        <section className="h-1/4 w-full pl-5 md:mt-10 text-white my-5 md:px-20 animate-pulse">
+            <div className="h-8 bg-zinc-700 rounded w-1/3 mb-5"></div>
+            <div className="flex flex-row gap-4 overflow-hidden w-full p-6">
+                {Array.from({ length: 7 }).map((_, index) => (
+                    <CardSkeleton key={index} />
+                ))}
+            </div>
+        </section>
+    );
+};
 
 const TopratingSection = ({setDetailData}) => {
         const scrollRef =useRef(null)
@@ -18,37 +31,18 @@ const TopratingSection = ({setDetailData}) => {
                 scrollRef.current.scrollBy({left:300, behavior:'smooth'})
             }
         }
-
-    const [movies, setMovies] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const { 
+      nowPlayingMovies: movies, 
+      nowPlayingLoading: loading, 
+      nowPlayingError: error, 
+      fetchNowPlayingMovies 
+    } = useMovieStore()
 
   useEffect(() => {
-    const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
-    const token = import.meta.env.VITE_TMDB_BEARER_TOKEN
-    const options = {
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    }
-
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get(url, options)
-        setMovies(response.data.results)
-      } catch (err) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-
-    fetchMovies()
-  }, []) 
+    fetchNowPlayingMovies()
+  }, [fetchNowPlayingMovies]) 
   if (loading) {
-    return <div>Loading movies...</div>
+    return <TopRatingSkeleton />
   }
   if (error) {
     return <div className="text-red-500 text-center">Error fetching data: {error.message}</div>
