@@ -194,7 +194,7 @@ const ChillPlayer = () => {
 
 
         {/* Tombol Lewati Intro */}
-        {showSkipIntro && (
+        {showSkipIntro &&  (
         <div className="absolute bottom-28 right-6 md:bottom-32 md:right-10 transition-opacity opacity-100">
             <button className="bg-white text-gray-700 backdrop-blur-sm px-4 py-2 rounded-full text-sm hover:bg-white/30 transition-colors">
                 Lewati Intro

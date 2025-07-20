@@ -18,7 +18,7 @@ const Header = () => {
                     </ul>
                     <div className="flex flex-row w-1/5 items-center gap-1.5 justify-end">
                         {userCurrent && (
-                            <Link to={`/profile/${userCurrent.username}`} className="flex-row flex items-center gap-3">
+                            <Link to={`/account/${userCurrent.id}`} className="flex-row flex items-center gap-3">
                                 <p className="text-white font-bold">{userCurrent.username}</p>
                                 <img className=" w-6 rounded-full hover:rounded-sm cursor-pointer border-1 border-gray-500 md:w-10" src={User} alt="user"/>
                             </Link>

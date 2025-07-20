@@ -156,9 +156,7 @@ const [daftarSaya, setDaftarSaya] = useState([])
     if (loading) {
         return (
             <>
-                <Header />
-                <AccountSkeleton />
-                <Footer />
+              <AccountSkeleton />
             </>
         )
     }

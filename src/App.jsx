@@ -21,7 +21,7 @@ const AppContent = () => {
         <Route path="/register" element={<Register/>} />
         <Route path="/daftarsaya" element={<ProtectedRoute><Daftarsaya/></ProtectedRoute>} />
         <Route path="/tespage" element={<ProtectedRoute><ProfileForm/></ProtectedRoute>} />
-        <Route path="/account" element={<ProtectedRoute><Account/></ProtectedRoute>} />
+        <Route path="/account/:id" element={<ProtectedRoute><Account/></ProtectedRoute>} />
         <Route path="/" element={<ProtectedRoute><Mainpage/></ProtectedRoute>} />
         <Route path="/player/:id" element={<ProtectedRoute><ChillPlayer></ChillPlayer></ProtectedRoute>} />
         <Route path="*" element={<NoPage/>} />
